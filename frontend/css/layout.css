@@ -1,0 +1,157 @@
+/* ================================================================
+   SpinGo — layout.css
+   Palette vars defined in main.css / home.css :root
+   ================================================================ */
+
+.page-wrapper {
+    padding-top: 80px;
+    min-height: 100vh;
+    background: var(--background);
+}
+
+/* Hero fallback for non-home pages */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+/* ── Dashboard Layout ──────────────────────────────────────── */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+.sidebar {
+    background: var(--white);
+    padding: 40px 24px;
+    border-right: 1px solid var(--border-light);
+    height: calc(100vh - 80px);
+    position: sticky;
+    top: 80px;
+}
+
+.nav-links.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+}
+
+.nav-links.sidebar-links a {
+    display: block;
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    background: transparent;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: var(--transition-smooth);
+}
+
+.nav-links.sidebar-links a:hover,
+.nav-links.sidebar-links a.active {
+    background: var(--accent-light);
+    color: var(--primary);
+}
+
+.main-content {
+    padding: 40px 60px;
+    background: var(--background);
+}
+
+/* ── Section Header ────────────────────────────────────────── */
+.section-header {
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    color: var(--text-main);
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+/* ── Auth Layout ───────────────────────────────────────────── */
+.auth-layout {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
+}
+
+.auth-card {
+    background: var(--white);
+    padding: 48px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-float);
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid var(--border-light);
+}
+
+.auth-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-footer a:hover { text-decoration: underline; }
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 992px) {
+    .dashboard-layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+
+    .hero-content h1 { font-size: 36px; }
+
+    .booking-widget {
+        flex-direction: column;
+        padding: 24px;
+    }
+
+    .widget-field { min-width: 100%; }
+    .main-content { padding: 30px 20px; }
+}
+
+@media (max-width: 768px) {
+    .page-wrapper { padding-top: 70px; }
+    .hero { height: 500px; }
+    .hero-content h1 { font-size: 28px; }
+    .hero-content p { font-size: 16px; }
+
+    .booking-widget {
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px;
+    }
+
+    .widget-field { min-width: 100%; }
+
+    .auth-card { padding: 32px 24px; }
+    .auth-title { font-size: 24px; }
+}

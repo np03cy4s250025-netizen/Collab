@@ -1,0 +1,593 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap&font-display=swap');
+
+/* ================================================================
+   SpinGo — main.css
+   Palette:
+     --primary   #3F3E46  (dark charcoal)
+     --secondary #52525C  (dark gray)
+     --accent    #7B6262  (muted brown)
+     --bg        #BFC4C4  (light muted background)
+   ================================================================ */
+
+:root {
+    /* ── Core Palette ── */
+    --primary:        #3F3E46;
+    --primary-dark:   #2e2d34;
+    --primary-hover:  #2e2d34;
+    --secondary:      #52525C;
+    --secondary-hover:#3F3E46;
+    --accent:         #7B6262;
+    --accent-dark:    #5c4a4a;
+    --accent-glow:    rgba(123, 98, 98, 0.22);
+    --accent-light:   rgba(123, 98, 98, 0.10);
+
+    /* ── Backgrounds ── */
+    --bg-main:    #BFC4C4;
+    --bg-dark:    #2e2d34;
+    --bg-light:   #d0d5d5;
+    --background: #BFC4C4;
+    --surface:    #a8afaf;
+
+    /* ── Neutrals ── */
+    --white:        #ffffff;
+    --glass:        rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.40);
+    --border-light: #9ca3a3;
+
+    /* ── Text ── */
+    --text-main:  #1a1a1a;
+    --text-muted: #52525C;
+    --text-light: #7B6262;
+
+    /* ── Status (functional only — unchanged) ── */
+    --status-active:    #059669;
+    --status-completed: #0284c7;
+    --status-cancelled: #dc2626;
+    --status-pending:   #d97706;
+
+    /* ── Radius ── */
+    --radius-lg:   20px;
+    --radius-md:   12px;
+    --radius-sm:   8px;
+    --radius-pill: 50px;
+
+    /* ── Shadows ── */
+    --shadow-premium: 0 10px 30px rgba(0,0,0,0.10), 0 1px 8px rgba(0,0,0,0.05);
+    --shadow-float:   0 20px 50px rgba(0,0,0,0.18);
+    --shadow-sm:      0 4px 14px rgba(0,0,0,0.10);
+
+    /* ── Transitions ── */
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast:   all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-image:  transform 0.35s ease;
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; letter-spacing: -0.5px; }
+h3 { font-size: 1.75rem; }
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-smooth);
+}
+
+p {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section { padding: 100px 0; }
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 { margin-bottom: 16px; }
+
+/* ── Hero ────────────────────────────────────────────────────── */
+.hero {
+    background: linear-gradient(135deg, var(--bg-main) 0%, var(--surface) 100%);
+    padding: 200px 0 100px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 500px; height: 500px;
+    background: rgba(63, 62, 70, 0.10);
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 10%;
+    width: 300px; height: 300px;
+    background: rgba(123, 98, 98, 0.08);
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    margin-bottom: 20px;
+    color: var(--primary);
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    color: var(--text-muted);
+}
+
+/* ── Booking Widget ──────────────────────────────────────────── */
+.booking-widget {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: var(--radius-lg);
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.widget-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+}
+
+.widget-field label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.widget-field select,
+.widget-field input {
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border-light);
+    background: var(--white);
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: var(--transition-fast);
+    color: var(--text-main);
+}
+
+.widget-field select:focus,
+.widget-field input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+/* ── Typography Utilities ────────────────────────────────────── */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-center { text-align: center; }
+.text-muted  { color: var(--text-muted); }
+
+/* ── Glass Card ──────────────────────────────────────────────── */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-premium);
+    transition: var(--transition-smooth);
+    border-radius: var(--radius-lg);
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-float);
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.40);
+}
+
+/* ── Navbar ──────────────────────────────────────────────────── */
+.navbar {
+    background: var(--bg-main);
+    box-shadow: var(--shadow-sm);
+    padding: 16px 0;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    transition: var(--transition-fast);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.navbar.nav-scrolled {
+    background: rgba(191, 196, 196, 0.95);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-premium);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo span { color: var(--accent); }
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.nav-links a:hover { color: var(--primary); }
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btn {
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    font-size: 14px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-premium);
+    color: var(--white);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--accent-light);
+    color: var(--primary);
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-hover);
+    transform: translateY(-2px);
+    color: var(--white);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.w-100 { width: 100%; }
+
+/* ── Cards ───────────────────────────────────────────────────── */
+.card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 24px;
+    transition: var(--transition-smooth);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-premium);
+    transform: translateY(-4px);
+}
+
+.card-header {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.card-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* ── Grid Layouts ────────────────────────────────────────────── */
+.grid   { display: grid; gap: 24px; }
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+/* ── Table Styling ───────────────────────────────────────────── */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+}
+
+.table thead { background: var(--surface); }
+
+.table th {
+    padding: 16px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--text-main);
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-main);
+}
+
+.table tbody tr:hover { background: var(--bg-light); }
+
+/* ── Badges ──────────────────────────────────────────────────── */
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-active    { background: rgba(5,150,105,0.12);  color: var(--status-active); }
+.badge-completed { background: rgba(2,132,199,0.12);  color: var(--status-completed); }
+.badge-cancelled { background: rgba(220,38,38,0.12);  color: var(--status-cancelled); }
+.badge-pending   { background: rgba(217,119,6,0.12);  color: var(--status-pending); }
+
+/* ── Form Elements ───────────────────────────────────────────── */
+.form-control,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-family: inherit;
+    transition: var(--transition-fast);
+    background: var(--white);
+    color: var(--text-main);
+    box-sizing: border-box;
+}
+
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 14px;
+}
+
+/* ── Spacing Utilities ───────────────────────────────────────── */
+.mt-8  { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+
+.mb-8  { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+
+.p-8  { padding: 8px; }
+.p-16 { padding: 16px; }
+.p-24 { padding: 24px; }
+.p-32 { padding: 32px; }
+
+/* ── Image Styling ───────────────────────────────────────────── */
+img { transition: var(--transition-image); }
+
+.image-hover-zoom:hover { transform: scale(1.05); }
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .nav-links { gap: 24px; }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: var(--bg-main);
+        border-bottom: 1px solid var(--border-light);
+        box-shadow: var(--shadow-sm);
+        gap: 0;
+    }
+
+    .nav-links.mobile-open { display: flex; }
+
+    .nav-links a {
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .auth-buttons { gap: 8px; }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+
+    .table { font-size: 12px; }
+    .table th,
+    .table td { padding: 12px 8px; }
+}
+
+/* ── Accessibility: focus-visible ────────────────────────────── */
+/* Remove default outline for mouse users, keep for keyboard users */
+*:focus { outline: none; }
+
+*:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+/* Buttons get a ring that contrasts against their background */
+.btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-outline:focus-visible,
+.btn-secondary:focus-visible,
+.btn-hero:focus-visible,
+.btn-auth-submit:focus-visible,
+.nav-hamburger:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px var(--accent-glow);
+}
+
+/* Link underline on keyboard focus */
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
