@@ -1,0 +1,313 @@
+/* ================================================================
+   SpinGo — dashboard.css
+   Palette:
+     --primary   #3F3E46   --secondary #52525C
+     --accent    #7B6262   --bg-main   #BFC4C4
+   ================================================================ */
+
+/* ── Page wrapper ──────────────────────────────────────────── */
+.dash-wrapper {
+    padding-top: 110px;
+    padding-bottom: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    min-height: 100vh;
+}
+
+/* ── Page header ───────────────────────────────────────────── */
+.dash-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.dash-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.dash-header p {
+    color: var(--text-light);
+    font-size: 15px;
+}
+
+/* ── Stat grid ─────────────────────────────────────────────── */
+.dash-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 36px;
+}
+
+.dash-stat-card {
+    background: var(--white);
+    border-left: 4px solid var(--primary);
+    padding: 22px 24px;
+    border-radius: 14px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: box-shadow 0.25s ease;
+}
+
+.dash-stat-card:hover { box-shadow: var(--shadow-premium); }
+
+/* Accent variants — still use functional palette only */
+.dash-stat-accent-yellow { border-left-color: #d97706; }
+.dash-stat-accent-blue   { border-left-color: #0284c7; }
+.dash-stat-accent-green  { border-left-color: #059669; }
+
+.dash-stat-icon {
+    font-size: 28px;
+    color: var(--primary);
+    min-width: 36px;
+}
+
+.dash-stat-accent-yellow .dash-stat-icon { color: #d97706; }
+.dash-stat-accent-blue   .dash-stat-icon { color: #0284c7; }
+.dash-stat-accent-green  .dash-stat-icon { color: #059669; }
+
+.dash-stat-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.dash-stat-value {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+/* ── Card section ──────────────────────────────────────────── */
+.dash-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    padding: 28px 30px;
+    margin-bottom: 28px;
+}
+
+.dash-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.dash-card-header h2,
+.dash-card-header h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+}
+
+/* ── Table ─────────────────────────────────────────────────── */
+.dash-table-wrap { overflow-x: auto; }
+
+.dash-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.dash-table thead th {
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--text-light);
+    background: var(--bg-main);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.dash-table thead th:first-child { border-radius: 8px 0 0 8px; }
+.dash-table thead th:last-child  { border-radius: 0 8px 8px 0; }
+
+.dash-table tbody td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-main);
+    vertical-align: middle;
+}
+
+.dash-table tbody tr:hover { background: var(--bg-light); }
+.dash-table tbody tr:last-child td { border-bottom: none; }
+
+.dash-td-id    { color: var(--text-light); font-weight: 600; font-size: 13px; }
+.dash-td-price { font-weight: 700; color: var(--accent); }
+
+.dash-vehicle-name { font-weight: 700; color: var(--text-main); }
+.dash-vehicle-type { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+
+/* ── Status badges ─────────────────────────────────────────── */
+.dash-status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.dash-status-pending   { background: rgba(217,119,6,0.12);  color: #b45309; }
+.dash-status-confirmed { background: rgba(5,150,105,0.12);  color: #166534; }
+.dash-status-completed { background: rgba(2,132,199,0.12);  color: #1d4ed8; }
+.dash-status-cancelled { background: rgba(220,38,38,0.12);  color: #b91c1c; }
+
+/* ── Cancel button ─────────────────────────────────────────── */
+.dash-btn-cancel {
+    background: none;
+    border: 1px solid rgba(220,38,38,0.30);
+    color: #b91c1c;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.dash-btn-cancel:hover {
+    background: rgba(220,38,38,0.08);
+    border-color: rgba(220,38,38,0.60);
+}
+
+.dash-no-action {
+    color: var(--border-light);
+    font-size: 14px;
+}
+
+/* ── Empty state ───────────────────────────────────────────── */
+.dash-empty {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.dash-empty i {
+    font-size: 48px;
+    color: var(--border-light);
+    display: block;
+    margin-bottom: 16px;
+}
+
+.dash-empty p {
+    color: var(--text-light);
+    margin-bottom: 12px;
+}
+
+.dash-empty-link {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dash-empty-link:hover { text-decoration: underline; }
+
+/* ── Admin extras ──────────────────────────────────────────── */
+.admin-action-link {
+    color: var(--secondary);
+    font-size: 15px;
+    margin-right: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.admin-action-link:hover { opacity: 0.7; }
+
+.admin-delete-btn {
+    background: none;
+    border: none;
+    color: #b91c1c;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.2s;
+}
+
+.admin-delete-btn:hover { opacity: 0.7; }
+
+/* ── Responsive ────────────────────────────────────────────── */
+/* ── Admin Dashboard Extras ─────────────────────────────── */
+.status-badge-urgent {
+    background: #FEF2F2 !important;
+    color: #DC2626 !important;
+    border: 1px solid #FCA5A5 !important;
+    font-weight: 700 !important;
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% { border-color: #FCA5A5; box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.2); }
+    50% { border-color: #EF4444; box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
+    100% { border-color: #FCA5A5; box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.admin-quick-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-action {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-approve { background: #DCFCE7; color: #166534; }
+.btn-approve:hover { background: #BBF7D0; }
+.btn-reject { background: #FEF2F2; color: #991B1B; }
+.btn-reject:hover { background: #FEE2E2; }
+
+.row-pending {
+    background-color: #FFFBEB !important;
+    transition: background-color 0.3s ease;
+}
+
+.row-pending:hover {
+    background-color: #FEF3C7 !important;
+}
+
+.admin-license-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 5px 10px;
+    background: #f3f4f6;
+    border-radius: 6px;
+    transition: opacity 0.2s;
+}
+
+.admin-license-link:hover {
+    opacity: 0.8;
+}
+
